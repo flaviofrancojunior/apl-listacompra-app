@@ -6,7 +6,6 @@ import { Observable, catchError, map, of, throwError } from 'rxjs';
 import { IAcessoServico } from '@/app/dominio/contratos/servicos/acesso.interface';
 import { IAcessoUseCase } from '@/app/dominio/contratos/casos-uso/acesso/acesso.interface';
 import { IConfiguracaoHelper } from '@/app/dominio/contratos/helpers/configuracao.interface';
-import { IParametrosUseCase } from '@/app/dominio/contratos/casos-uso/sistema/parametros.interface';
 import { IUsuariosServico } from '@/app/dominio/contratos/servicos/usuarios.interface';
 import { Injectable } from '@angular/core';
 import { Menu } from '@/app/dominio/entidades/acesso/menu.model';
@@ -16,14 +15,7 @@ import { Usuario } from '@/app/dominio/entidades/usuario/usuario.model';
     providedIn: 'root'
 })
 export class AcessoUseCase implements IAcessoUseCase {
-    constructor(
-        private _armazenamentoServico: IArmazenamentoServico,
-        private _acessoServico: IAcessoServico,
-        private _usuariosServico: IUsuariosServico,
-        private _configuracaoHelper: IConfiguracaoHelper,
-        private _navegacaoHelper: INavegacaoHelper,
-        private _parametrosUseCase: IParametrosUseCase
-    ) {}
+    constructor(private _armazenamentoServico: IArmazenamentoServico, private _acessoServico: IAcessoServico, private _usuariosServico: IUsuariosServico, private _configuracaoHelper: IConfiguracaoHelper, private _navegacaoHelper: INavegacaoHelper) {}
 
     autenticarUsuario(usuario: string, chave: string, lembrarUsuario: boolean): Observable<any> {
         this._armazenamentoServico.remover('usuario-logado', Local.memoria);

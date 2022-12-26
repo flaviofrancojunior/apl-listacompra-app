@@ -1,17 +1,9 @@
-import { Banco } from '@/app/dominio/entidades/pessoas/banco.model';
 import { BibliotecaImagens } from '@/app/dominio/contratos/repositorios/imagens.interface';
 import { CalendarioConfiguracao } from '@/app/dominio/entidades/componentes/calendario.model';
-import { Cartao } from '@/app/dominio/entidades/pessoas/cartao.model';
-import { Conta } from '@/app/dominio/entidades/pessoas/conta.model';
 import { Historico } from '@/app/dominio/entidades/sistema/auditoria.model';
 import { ID } from '@/app/dominio/entidades/sistema/types.model';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Moeda } from '@/app/dominio/entidades/cadastros/moeda.model';
-import { MovimentacaoContabil } from '@/app/dominio/entidades/movimentacao/contabil.model';
-import { MovimentacaoFinanceira } from '../../entidades/movimentacao/movimentacao.model';
 import { Parametro } from '@/app/dominio/entidades/sistema/parametro.model';
-import { Pessoa } from '@/app/dominio/entidades/pessoas/pessoa.model';
-import { PlanoConta } from '@/app/dominio/entidades/cadastros/plano-conta.model';
 
 //#region Modais Informativos
 export type ModalTipoInformacaoDetalhe = {
@@ -138,17 +130,7 @@ export type ModalFormularioConfiguracao = {
     operacao: keyof typeof FormularioOperacao;
 };
 
-export type ModalFormularioConfiguracaoNovoBanco = ModalFormularioConfiguracao & { dados?: Banco; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovaConta = ModalFormularioConfiguracao & { dados?: Conta | ID; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovoCartao = ModalFormularioConfiguracao & { dados?: Cartao | ID; listasValidacao?: any };
 export type ModalFormularioConfiguracaoNovoParametro = ModalFormularioConfiguracao & { dados?: Parametro; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovaPessoa = ModalFormularioConfiguracao & { dados?: Pessoa; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovoPlanoConta = ModalFormularioConfiguracao & { dados?: { idRaiz: ID; idPai: ID; planoConta: PlanoConta }; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovaMoeda = ModalFormularioConfiguracao & { dados?: Moeda; listasValidacao?: { chave: keyof Pick<Moeda, 'simbolo' | 'codigo' | 'paisOrigemCodigo'>; valor: string[] }[] };
-export type ModalFormularioConfiguracaoNovaMovimentacaoFinanceira = ModalFormularioConfiguracao & { dados?: MovimentacaoFinanceira; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovaMovimentacaoContabil = ModalFormularioConfiguracao & { dados?: MovimentacaoContabil; listasValidacao?: any };
-export type ModalFormularioConfiguracaoNovaMovimentacaoContabilDetalhe = ModalFormularioConfiguracao & { dados?: MovimentacaoContabil; listasValidacao?: any };
-export type ListaValidacaoNovaMoeda = { [chave in keyof Pick<Moeda, 'simbolo' | 'codigo' | 'paisOrigemCodigo'>]: string[] };
 
 export const enum FormularioOperacao {
     'cadastrar' = 'cadastrar',
@@ -159,21 +141,7 @@ export const enum FormularioOperacao {
 export abstract class IModaisHelper {
     abstract exibirInformacao(modal: keyof typeof ModalTipoInformacao): MatDialogRef<any>;
     abstract exibirConfirmacao(tipo: keyof typeof ModalTipoConfirmacao): MatDialogRef<any>;
-    abstract exibirHistorico(dados: ModalTipoHistoricoDetalhe[]): MatDialogRef<any, any>;
-    abstract exibirContabilizacao(pessoaId: ID): MatDialogRef<any, any>;
     abstract exibirCalendario(dados: CalendarioConfiguracao): MatDialogRef<any>;
-    abstract exibirFomulario(
-        config:
-            | ModalFormularioConfiguracaoNovaMoeda
-            | ModalFormularioConfiguracaoNovoBanco
-            | ModalFormularioConfiguracaoNovoParametro
-            | ModalFormularioConfiguracaoNovaPessoa
-            | ModalFormularioConfiguracaoNovoCartao
-            | ModalFormularioConfiguracaoNovaConta
-            | ModalFormularioConfiguracaoNovoPlanoConta
-            | ModalFormularioConfiguracaoNovaMovimentacaoFinanceira
-            | ModalFormularioConfiguracaoNovaMovimentacaoContabil
-            | ModalFormularioConfiguracaoNovaMovimentacaoContabilDetalhe
-    ): MatDialogRef<any>;
+    abstract exibirFomulario(config: ModalFormularioConfiguracaoNovoParametro): MatDialogRef<any>;
     abstract fechar(): void;
 }

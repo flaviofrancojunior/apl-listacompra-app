@@ -7,7 +7,6 @@ import { UntypedFormGroup, ValidationErrors } from '@angular/forms';
 import dayjs, { Dayjs } from 'dayjs';
 
 import { BibliotecaIcones } from '@/app/dominio/contratos/repositorios/icones.interface';
-import { ListaOpcoesSelect } from '../select/select.component';
 import { TooltipConfig } from '@/app/dominio/entidades/componentes/tooltip.model';
 import { v4 as uuidv4 } from 'uuid';
 
