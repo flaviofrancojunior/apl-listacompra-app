@@ -1,0 +1,45 @@
+@import '../../../estilos/principal.scss';
+
+.header {
+    background-color: $color-neutral-white;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+
+    -webkit-box-shadow: $shadow-light;
+    -moz-box-shadow: $shadow-light;
+    box-shadow: $shadow-light;
+
+    @extend .p-6;
+
+    .header_title {
+        @extend .h3, .fg-primary-medium;
+    }
+
+    .header_action {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .header_action_notification {
+            position: absolute;
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+
+            margin-left: 12px;
+            margin-bottom: 12px;
+
+            background-color: $color-feedback-info-medium;
+        }
+    }
+}
+
+.menu_divider {
+    margin: 0px 8px;
+    height: 1px;
+    background-color: $color-neutral-light;
+}

@@ -1,0 +1,10 @@
+.tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 56px);
+    grid-template-rows: repeat(auto-fit, 56px);
+    grid-gap: 16px;
+}
+
+.hover-no-shadow:hover {
+    box-shadow: none;
+}

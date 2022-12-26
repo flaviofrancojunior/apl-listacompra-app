@@ -1,0 +1,7 @@
+<div class="switch-wrapper" [formGroup]="control">
+    <input class="switch-input" type="checkbox" [formControlName]="controlName" />
+    <div class="switch-label">
+        <div class="switch-label-option {{ control.get(controlName)?.value ? 'switch-label--checked' : 'switch-label--unchecked' }}">{{ checkedText }}</div>
+        <div class="switch-label-option {{ control.get(controlName)?.value ? 'switch-label--unchecked' : 'switch-label--checked' }}">{{ uncheckedText }}</div>
+    </div>
+</div>

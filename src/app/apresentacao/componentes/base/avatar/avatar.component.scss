@@ -1,0 +1,53 @@
+@import '../../../estilos/principal.scss';
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100%;
+    border: 2px solid $color-support-03-medium;
+
+    &[size='small'] {
+        width: 48px;
+        height: 48px;
+
+        .avatar_image {
+            width: 42px;
+            height: 42px;
+        }
+    }
+    &[size='medium'] {
+        width: 64px;
+        height: 64px;
+
+        .avatar_image {
+            width: 58px;
+            height: 58px;
+        }
+    }
+    &[size='large'] {
+        width: 78px;
+        height: 78px;
+
+        .avatar_image {
+            width: 72px;
+            height: 72px;
+        }
+    }
+    &[size='extra-large'] {
+        width: 126px;
+        height: 126px;
+
+        .avatar_image {
+            width: 120px;
+            height: 120px;
+        }
+    }
+}
+
+.avatar_image {
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center right;
+}

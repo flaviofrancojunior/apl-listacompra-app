@@ -1,0 +1,4 @@
+<div class="avatar" [attr.size]="_size">
+    <img *ngIf="_picture" class="avatar_image" [src]="_picture" alt="Imagem de perfil" />
+    <img *ngIf="!_picture" class="avatar_image" [src]="repositorioImagens.obter('avatar_usuario-generico')?.caminho" alt="Imagem de perfil" />
+</div>

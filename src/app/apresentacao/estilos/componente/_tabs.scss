@@ -1,0 +1,137 @@
+@import './../base/colors';
+
+.vertical {
+    ::ng-deep .mat-tab-group {
+        flex-direction: row;
+    }
+    ::ng-deep .mat-tab-header {
+        border-bottom: none;
+    }
+    ::ng-deep .mat-tab-header-pagination {
+        display: none !important;
+    }
+    ::ng-deep .mat-tab-labels {
+        flex-direction: column;
+    }
+    ::ng-deep .mat-ink-bar {
+        height: 100%;
+        left: 98% !important;
+    }
+    ::ng-deep .mat-tab-body-wrapper {
+        flex: 1 1 auto;
+        background-color: $color-neutral-white;
+        border-radius: 4px;
+        box-shadow: $shadow-light;
+    }
+}
+
+.horizontal {
+    ::ng-deep .mat-tab-body-wrapper {
+        background-color: $color-neutral-white;
+        border-radius: 4px;
+    }
+}
+
+[theme='primary'] {
+    .mat-tab-label {
+        height: auto !important;
+
+        opacity: 1 !important;
+
+        margin-right: 16px;
+        margin-bottom: 8px;
+
+        border-radius: 4px;
+
+        color: $color-brand-primary-medium;
+
+        padding: 8px 8px !important;
+
+        @extend .s3;
+    }
+
+    .mat-tab-label.mat-tab-label-active {
+        @extend .s3;
+    }
+
+    .mat-tab-group.mat-primary .mat-ink-bar,
+    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: $color-brand-primary-medium !important;
+    }
+}
+
+[theme='primary-outline'] {
+    .mat-tab-label {
+        height: auto !important;
+
+        opacity: 1 !important;
+
+        margin-right: 16px;
+        margin-bottom: 8px;
+
+        border-radius: 4px;
+
+        color: $color-neutral-dark;
+        background-color: $color-neutral-white;
+        border: 1px solid $color-neutral-light;
+
+        padding: 8px 8px !important;
+
+        @extend .s2;
+    }
+
+    .mat-tab-label.mat-tab-label-active {
+        color: $color-brand-primary-medium !important;
+        border: 1px solid $color-brand-primary-medium !important;
+
+        @extend .s2;
+    }
+
+    .mat-tab-group.mat-primary .mat-ink-bar,
+    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: transparent !important;
+    }
+
+    .mat-tab-nav-bar,
+    .mat-tab-header {
+        border-bottom: none !important;
+    }
+}
+
+[theme='support03'] {
+    .mat-tab-label {
+        height: auto !important;
+
+        opacity: 1 !important;
+
+        margin-right: 16px;
+        margin-bottom: 8px;
+
+        border-radius: 4px;
+
+        color: $color-brand-primary-medium;
+        background-color: $color-neutral-white;
+        //border: 1px solid $color-neutral-white;
+        padding: 8px 8px !important;
+
+        @extend .s2;
+    }
+
+    .mat-tab-label.mat-tab-label-active {
+        color: $color-neutral-white !important;
+        background-color: $color-support-03-medium !important;
+        border: 1px solid $color-support-03-medium !important;
+
+        @extend .s2;
+    }
+
+    .mat-tab-group.mat-primary .mat-ink-bar,
+    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: transparent !important;
+    }
+
+    .mat-tab-nav-bar,
+    .mat-tab-header {
+        border-bottom: none !important;
+    }
+}

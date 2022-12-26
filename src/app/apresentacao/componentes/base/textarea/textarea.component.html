@@ -1,0 +1,30 @@
+<ng-container [formGroup]="control">
+    <div class="textarea_container textarea_full" [class.textarea_container--invalid]="_listaErros.length > 0 || invalid">
+        <ng-content></ng-content>
+        <textarea
+            class="p1 {{ label ? 'textarea_field' : 'textarea_field--no-label' }}  {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+            [id]="_id"
+            [formControlName]="controlName"
+            type="text"
+            [attr.maxLength]="maxLength ? maxLength : undefined"
+            (ngModelChange)="emitirEventoDigitacao()"
+            style="resize: none">
+        </textarea>
+        <label class="p3 fg-neutral-dark textarea_label" [for]="_id">{{ placeholder }}</label>
+        <ng-container *ngIf="showCharacters">
+            <ng-container *ngIf="maxLength">
+                <div class="d-flex flex-justify-end">
+                    <div class="p5 fg-neutral-medium">{{ control.get(controlName)?.value.length }} / maxLength</div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!maxLength">
+                <div class="d-flex flex-justify-end">
+                    <div class="p5 fg-neutral-medium">{{ control.get(controlName)?.value.length }}</div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <ng-container *ngFor="let erro of _listaErros">
+        <div class="p3 fg-danger-dark mt-1">{{ erro }}</div>
+    </ng-container>
+</ng-container>

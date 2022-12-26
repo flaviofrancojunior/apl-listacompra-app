@@ -1,0 +1,14 @@
+<sfr-sidenav [menu]="_menu" (selecionarCategoriaEvento)="definirSubcategorias($event)">
+    <sfr-header class="page-header" (selecionarCategoriaEvento)="definirSubcategorias($event)"></sfr-header>
+
+    <div class="d-flex w-100">
+        <!-- <ng-container *ngIf="_subcategorias && _subcategorias.length > 0"> -->
+        <sfr-subnav #subnav class="page-subnav" [menu]="_menu"></sfr-subnav>
+        <!-- </ng-container> -->
+
+        <div class="page-container pos-relative w-100" [class.subnav]="subnav._subcategorias && subnav._subcategorias.length > 0" [class.expanded]="subnav._expandido">
+            <sfr-spinner name="global" text="Processando..."></sfr-spinner>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</sfr-sidenav>

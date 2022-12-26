@@ -1,0 +1,29 @@
+$MontserratPath: 'fonts' !default;
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('#{$MontserratPath}/Regular/Montserrat-Regular.eot');
+    src: url('#{$MontserratPath}/Regular/Montserrat-Regular.eot?#iefix')
+            format('embedded-opentype'),
+        url('#{$MontserratPath}/Regular/Montserrat-Regular.woff2')
+            format('woff2'),
+        url('#{$MontserratPath}/Regular/Montserrat-Regular.ttf')
+            format('truetype'),
+        url('#{$MontserratPath}/Regular/Montserrat-Regular.svg#Montserrat-Regular')
+            format('svg');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('#{$MontserratPath}/Bold/Montserrat-Bold.eot');
+    src: url('#{$MontserratPath}/Bold/Montserrat-Bold.eot?#iefix')
+            format('embedded-opentype'),
+        url('#{$MontserratPath}/Bold/Montserrat-Bold.woff2') format('woff2'),
+        url('#{$MontserratPath}/Bold/Montserrat-Bold.ttf') format('truetype'),
+        url('#{$MontserratPath}/Bold/Montserrat-Bold.svg#Montserrat-Bold')
+            format('svg');
+}

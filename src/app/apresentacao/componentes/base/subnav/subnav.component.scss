@@ -1,0 +1,8 @@
+@import '../../../estilos/principal.scss';
+
+.subnav-container {
+    width: 64px;
+}
+.subnav-container.expandido {
+    width: 240px;
+}

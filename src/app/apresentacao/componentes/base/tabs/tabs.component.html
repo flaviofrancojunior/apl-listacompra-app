@@ -1,0 +1,9 @@
+<div [attr.theme]="theme || 'support03'" [class.vertical]="mode === 'vertical'" [class.horizontal]="mode === 'horizontal'">
+    <mat-tab-group (selectedTabChange)="definirNovaAbaAtiva($event)">
+        <ng-container *ngFor="let tab of listaTabs">
+            <mat-tab [label]="tab.label">
+                <ng-container [ngTemplateOutlet]="tab.templateRef"></ng-container>
+            </mat-tab>
+        </ng-container>
+    </mat-tab-group>
+</div>

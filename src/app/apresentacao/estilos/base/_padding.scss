@@ -1,0 +1,19 @@
+@mixin init-padding() {
+    @for $i from 0 through 25 {
+        .p-#{$i} {
+            padding: 4px * $i !important;
+        }
+        .pt-#{$i} {
+            padding-top: 4px * $i !important;
+        }
+        .pb-#{$i} {
+            padding-bottom: 4px * $i !important;
+        }
+        .pr-#{$i} {
+            padding-right: 4px * $i !important;
+        }
+        .pl-#{$i} {
+            padding-left: 4px * $i !important;
+        }
+    }
+}

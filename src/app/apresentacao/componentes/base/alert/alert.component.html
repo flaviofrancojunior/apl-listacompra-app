@@ -1,0 +1,4 @@
+<div [attr.theme]="_theme || 'basic'" class="alert-wrapper">
+    <sfr-icon *ngIf="_themeDetail.icon" [icon]="_themeDetail.icon" [iconClass]="['p1', _themeDetail.iconColor]"></sfr-icon>
+    <div class="p5 alert-text ml-2">{{ _text }}</div>
+</div>

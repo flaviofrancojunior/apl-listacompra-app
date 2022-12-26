@@ -1,0 +1,137 @@
+<ng-container [formGroup]="control" [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'texto'">
+        <div class="input_container" [class.input_container--invalid]="_listaErros.length > 0 || invalid">
+            <ng-content></ng-content>
+            <input
+                class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+                [id]="_id"
+                [formControlName]="controlName"
+                type="text"
+                [attr.size]="size ? size : undefined"
+                [attr.maxLength]="maxLength ? maxLength : undefined"
+                [attr.minLength]="minLength ? minLength : undefined"
+                (ngModelChange)="emitirEventoDigitacao()" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <ng-container *ngFor="let erro of _listaErros">
+            <div class="p3 fg-danger-dark mt-1">{{ erro }}</div>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'senha'">
+        <div class="input_container" [class.input_container--invalid]="invalid">
+            <sfr-input-icon [icon]="_exibirSenha ? 'eye-off' : 'eye-on'" (clicarEvento)="alternarVisibilidadeSenha()"></sfr-input-icon>
+            <input
+                class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+                [id]="_id"
+                [formControlName]="controlName"
+                [type]="_exibirSenha ? 'text' : 'password'"
+                [attr.size]="size ? size : undefined"
+                [attr.maxLength]="maxLength ? maxLength : undefined"
+                [attr.minLength]="minLength ? minLength : undefined" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'numero'">
+        <div class="input_container" [class.input_container--invalid]="invalid">
+            <input
+                inputmode="numeric"
+                class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+                [id]="_id"
+                [formControlName]="controlName"
+                type="number"
+                min="0"
+                step="1"
+                [attr.size]="size ? size : undefined"
+                [attr.maxLength]="maxLength ? maxLength : undefined"
+                [attr.minLength]="minLength ? minLength : undefined"
+                (ngModelChange)="emitirEventoDigitacao()" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'cpf'">
+        <div class="input_container" [class.input_container--invalid]="invalid">
+            <input class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}" [id]="_id" [formControlName]="controlName" type="text" mask="000.000.000-00" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'data'">
+        <div class="input_container  {{ picker.opened ? 'input_open' : '' }}" [class.input_container--invalid]="invalid" (click)="picker.open()">
+            <sfr-input-icon icon="calendar"></sfr-input-icon>
+            <input readonly class="p1 input_data {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}" [id]="_id" [formControlName]="controlName" [matDatepickerFilter]="filter" [matDatepicker]="picker" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+
+            <mat-datepicker #picker></mat-datepicker>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'data-ano-mes'">
+        <div class="input_container  {{ picker.opened ? 'input_open' : '' }}" [class.input_container--invalid]="invalid" (click)="picker.open()">
+            <sfr-input-icon icon="calendar"></sfr-input-icon>
+            <input readonly data-year-month class="p1 input_data {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}" [id]="_id" [formControlName]="controlName" [matDatepicker]="picker" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+
+            <mat-datepicker #picker startView="multi-year" (monthSelected)="definirMesAno($event, picker)"></mat-datepicker>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'busca'">
+        <div class="input_container" [class.input_container--invalid]="invalid">
+            <sfr-input-icon [icon]="_iconeBusca" (clicarEvento)="limpar()"></sfr-input-icon>
+            <input
+                class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }} {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+                [id]="_id"
+                [formControlName]="controlName"
+                type="text"
+                [attr.size]="size ? size : undefined"
+                [attr.maxLength]="maxLength ? maxLength : undefined"
+                [attr.minLength]="minLength ? minLength : undefined"
+                (ngModelChange)="emitirEventoDigitacao()" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'cartao'">
+        <div class="input_container" [class.input_container--invalid]="invalid">
+            <input class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}" [id]="_id" [formControlName]="controlName" type="text" mask="0000 0000 0000 0000" (ngModelChange)="emitirEventoDigitacao()" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'moeda'">
+        <div class="input_container" [class.input_container--invalid]="invalid">
+            <input
+                class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+                [id]="_id"
+                [formControlName]="controlName"
+                type="text"
+                currencyMask
+                [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left', nullable: true }"
+                (ngModelChange)="emitirEventoDigitacao()" />
+            <label class="p3 fg-neutral-darkest input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'select'">
+        <div class="input_container--no-border" [class.input_container--invalid]="invalid">
+            <sfr-input-icon [icon]="_iconeBusca" (clicarEvento)="limpar()"></sfr-input-icon>
+            <input
+                class="p1 {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }} {{ label ? 'input_field' : 'input_field--no-label' }} {{ control.get(controlName)?.value === '' ? 'empty' : '' }}"
+                [id]="_id"
+                [formControlName]="controlName"
+                type="text"
+                [attr.size]="size ? size : undefined"
+                [attr.maxLength]="maxLength ? maxLength : undefined"
+                [attr.minLength]="minLength ? minLength : undefined"
+                (ngModelChange)="emitirEventoDigitacao()" />
+            <label class="p3 fg-neutral-dark input_label" [for]="_id">{{ placeholder }}</label>
+        </div>
+        <div *ngIf="invalid ? (invalidText ? invalidText : false) : false" class="p3 fg-danger-dark mt-1">{{ invalidText }}</div>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>...</ng-container>
+</ng-container>

@@ -1,0 +1,35 @@
+<div mat-dialog-title>
+    <div class="d-flex flex-align-center mb-6">
+        <div class="s1 fg-support03-medium">Incluir usuário</div>
+        <div class="title-divider"></div>
+    </div>
+</div>
+<mat-dialog-content>
+    <div class="d-flex flex-column pos-relative" style="width: 580px" [formGroup]="_form">
+        <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+        <div class="mb-6">
+            <sfr-input type="busca" [label]="false" placeholder="Pesquise por nome, CPF ou matrícula." [invalid]="_form.hasError('Erro')" [control]="_form" controlName="pesquisa"></sfr-input>
+        </div>
+        <div class="d-flex flex-justify-between mb-4">
+            <div class="p2 fg-support03-medium">Resultado da busca</div>
+            <div *ngIf="_listaExibicao.length > 0" class="p5 fg-neutral-dark">{{ 'Exibindo ' + (_listaExibicao.length >= _listaExibicaoMaximoElementos ? _listaExibicaoMaximoElementos : _listaExibicao.length) + '/' + _listaExibicao.length + ' resultado(s).' }}</div>
+        </div>
+
+        <div class="mb-2" style="overflow-y: auto; height: 280px" (scroll)="observarRolagem($event)">
+            <ng-container *ngIf="estado.comDados">
+                <div *ngIf="_listaExibicao.length === 0" class="box-information">Sem dados para exibir no momento.</div>
+                <sfr-radio [control]="_form" controlName="cpf" [options]="_listaExibicao | slice: 0:_listaExibicaoMaximoElementos" size="full"></sfr-radio>
+            </ng-container>
+            <ng-container *ngIf="estado.erro">
+                <div class="box-information">
+                    <div class="p3 fg-neutral-darkest">Falha no carregamento do conteúdo.</div>
+                    <button sfr-button-link size="fit" (clicarEvento)="obterListaUsuariosBusca()">Atualizar <sfr-icon icon="refresh" [iconClass]="['fg-inherit', 'p1', 'ml-1']"></sfr-icon></button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="gap-4 flex-justify-end">
+    <button sfr-button-outline--primary size="fit" [disabled]="estado.carregando" (clicarEvento)="cancelar()">Cancelar</button>
+    <button sfr-button-flat--primary size="fit" [disabled]="_form.invalid || estado.carregando" (clicarEvento)="incluirUsuario()">Incluir</button>
+</mat-dialog-actions>

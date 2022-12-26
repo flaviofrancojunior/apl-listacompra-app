@@ -1,0 +1,5 @@
+<ngx-spinner [name]="name" bdColor="rgba(255, 255, 255, 0.95)" [size]="size" color="#00001e" type="ball-clip-rotate" template="<img src='{{ _spinnerURL.caminho }}' height='30px' />" [fullScreen]="false">
+    <ng-container *ngIf="text && text !== ''">
+        <p class="p1 fg-neutral-darkest text-center w-100">{{ text }}</p>
+    </ng-container>
+</ngx-spinner>

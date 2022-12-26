@@ -1,0 +1,51 @@
+<div sfr-card class="p-6">
+    <div class="d-flex flex-align-center mb-6">
+        <div class="s1 fg-support03-medium">Bancos Cadastrados</div>
+        <div class="title-divider mr-6"></div>
+        <button sfr-button-outline--primary [disabled]="estado.carregando" (clicarEvento)="cadastrarBanco()">Cadastrar novo banco</button>
+    </div>
+    <div class="mb-10">
+        <sfr-table-filter [config]="_filtrosExibidos" [dadosTabela]="_listaBancos"></sfr-table-filter>
+    </div>
+
+    <div class="w-100 pos-relative">
+        <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+        <mat-table matSort [dataSource]="_listaBancos" class="w-100">
+            <ng-container matColumnDef="nome">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por nome">Nome</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{ element.nome }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="codigo">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por código">Código</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{ element.codigo }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="ativo">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por ativo">Ativo</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <div class="w-100 d-flex flex-justify-start">
+                        <div class="p-1 fg-neutral-white w-fit border-radius-1" [ngClass]="element.ativo ? 'bg-success-medium' : 'bg-danger-medium'">{{ element.ativoExibicao }}</div>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="acao-2">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index">
+                    <button sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Editar" matTooltipPosition="above" (clicarEvento)="alterarBanco(element)">
+                        <sfr-icon icon="edit" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                    <button sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Remover" matTooltipPosition="above" (clicarEvento)="removerBanco(element.id)">
+                        <sfr-icon icon="delete" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="_colunasExibidas"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: _colunasExibidas"></mat-row>
+            <div *matNoDataRow class="p1 fg-neutral-medium p-4">Sem dados para exibir no momento.</div>
+        </mat-table>
+        <sfr-table-paginator [dadosTabela]="_listaBancos"></sfr-table-paginator>
+    </div>
+</div>

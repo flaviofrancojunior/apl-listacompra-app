@@ -1,0 +1,10 @@
+<mat-dialog-content>
+    <div class="d-flex flex-column flex-justify-center flex-align-center">
+        <div class="h6 text-center fg-neutral-darkest mb-6">{{ _dados.titulo }}</div>
+        <div class="p1 text-center fg-neutral-darkest">{{ _dados.mensagem }}</div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="gap-4">
+    <button sfr-button-outline--primary size="full" (clicarEvento)="acaoSecundaria()">{{ _dados.textoBotaoSecundario }}</button>
+    <button sfr-button-flat--primary size="full" (clicarEvento)="acaoPrimaria()">{{ _dados.textoBotaoPrimario }}</button>
+</mat-dialog-actions>

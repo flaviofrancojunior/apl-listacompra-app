@@ -1,0 +1,10 @@
+<ng-container [formGroup]="control">
+    <mat-radio-group [formControlName]="controlName">
+        <mat-radio-button *ngFor="let option of _options" [ngClass]="{ 'border-1 border-radius-1 ': border, 'w-100': size === 'full' }" class="pt-2 pb-2 pl-4 pr-4 mb-2-not-last" [disableRipple]="true" [value]="option.id">
+            <div class="d-flex flex-column w-100 gap-1">
+                <div class="p2 fg-neutral-darkest">{{ option.descricao }}</div>
+                <div class="p5 fg-neutral-darkest">{{ option.descricaoDetalhe }}</div>
+            </div>
+        </mat-radio-button>
+    </mat-radio-group>
+</ng-container>

@@ -1,0 +1,88 @@
+<div sfr-card class="p-6" *ngIf="_dados">
+    <div class="d-flex flex-align-center mb-6">
+        <div class="s1 fg-support03-medium">Movimentos Contabéis</div>
+        <div class="title-divider mr-6"></div>
+        <button sfr-button-outline--primary [disabled]="estado.carregando" (clicarEvento)="cadastrarMovimentacao()">Cadastrar Movimento Manual</button>
+    </div>
+    <div class="d-flex flex-align-center gap-4 mb-10">
+        <sfr-table-filter [config]="_filtrosExibidos" [dadosTabela]="_listaMovimentacoes"></sfr-table-filter>
+
+        <div class="d-flex flex-align-center flex-justify-center gap-4">
+            <img style="cursor: pointer" src="assets/img/export_xls.png" width="32px" height="32px" matTooltip="Exportar .xls" (click)="exportarXLS(_listaMovimentacoes)" />
+            <img style="cursor: pointer" src="assets/img/export_csv.png" width="32px" height="32px" matTooltip="Exportar .csv" (click)="exportarCSV(_listaMovimentacoes)" />
+        </div>
+    </div>
+
+    <div class="w-100 pos-relative">
+        <div class="mb-4">
+            <sfr-alert theme="info" text="A edição é possível para movimentações em lotes abertos. A remoção é possível para movimentações em lotes abertos e com lançamento manual."></sfr-alert>
+        </div>
+        <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+
+        <mat-table matSort [dataSource]="_listaMovimentacoes" class="w-100">
+            <ng-container matColumnDef="data">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por data">Data Movimento</mat-header-cell>
+                <mat-cell class="p3" *matCellDef="let element">{{ element.data | date: 'dd/MM/YYYY' }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="descricao">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por lançamento">Lançamento</mat-header-cell>
+                <mat-cell class="p3" *matCellDef="let element">
+                    <div class="mr-1" [style.text-decoration]="element.complemento.length > 0 ? 'underline' : 'none'" [matTooltip]="element.complemento.length > 0 ? element.complemento : ''" matTooltipPosition="above">{{ element.descricao }}</div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="valor">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por valor">Valor</mat-header-cell>
+                <mat-cell class="p3" *matCellDef="let element">{{ element.valor | accounting }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="planoContaCredito">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por conta de crédito">Conta Crédito</mat-header-cell>
+                <mat-cell class="p3" *matCellDef="let element">{{ element.planoContaCreditoNumero + ' - ' + element.planoContaCreditoDescricao }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="planoContaDebito">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por conta de débito">Conta Débito</mat-header-cell>
+                <mat-cell class="p3" *matCellDef="let element">{{ element.planoContaDebitoNumero + ' - ' + element.planoContaDebitoDescricao }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lote">
+                <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por lote">Lote</mat-header-cell>
+                <mat-cell class="p3" *matCellDef="let element">
+                    <div class="w-100 d-flex flex-justify-start">
+                        <sfr-icon [icon]="element.loteAberto ? 'lock-open' : 'lock-closed'" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="acao-4">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index">
+                    <button sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Detalhar movimento" matTooltipPosition="above" (clicarEvento)="adicionarDetalhamento(element)">
+                        <sfr-icon icon="price-lookup" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                    <button [style.visibility]="element.loteAberto ? 'visible' : 'hidden'" sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Editar" matTooltipPosition="above" (clicarEvento)="alterarMovimentacao(element)">
+                        <sfr-icon icon="edit" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                    <button
+                        [style.visibility]="element.loteAberto && !element.movimentoFinanceiroPaiId && !element.movimentoContabilPai ? 'visible' : 'hidden'"
+                        sfr-button-flat--transparent--rounded
+                        class="fg-inherit bg-inherit-hover"
+                        matTooltip="Remover"
+                        matTooltipPosition="above"
+                        (clicarEvento)="removerMovimentacao(element.id)">
+                        <sfr-icon icon="delete" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                    <button sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Visualizar Histórico" matTooltipPosition="above" (clicarEvento)="visualizarHistorico(element)">
+                        <sfr-icon icon="page-search" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="_colunasExibidas"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: _colunasExibidas"></mat-row>
+            <div *matNoDataRow class="p1 fg-neutral-medium p-4">Sem dados para exibir no momento.</div>
+        </mat-table>
+    </div>
+</div>

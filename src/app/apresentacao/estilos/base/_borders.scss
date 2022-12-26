@@ -1,0 +1,67 @@
+@import './variables';
+@import './colors';
+
+@mixin init-borders() {
+    @for $i from 0 through 25 {
+        .border-radius-#{$i} {
+            border-radius: $border-radius * $i !important;
+        }
+        .border-tl-radius-#{$i} {
+            border-top-left-radius: $border-radius * $i !important;
+        }
+        .border-tr-radius-#{$i} {
+            border-top-right-radius: $border-radius * $i !important;
+        }
+        .border-bl-radius-#{$i} {
+            border-bottom-left-radius: $border-radius * $i !important;
+        }
+        .border-br-radius-#{$i} {
+            border-bottom-right-radius: $border-radius * $i !important;
+        }
+    }
+}
+
+.border-radius-125 {
+    border-radius: 500px;
+}
+
+.border-radius-half {
+    border-radius: 50%;
+}
+.border-radius-full {
+    border-radius: 100%;
+}
+
+.border-1 {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-style: solid;
+    border-left-width: 1px;
+}
+
+.border-2 {
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-style: solid;
+    border-left-width: 2px;
+}
+
+.border-bottom-1 {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.border-basic {
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-neutral-light;
+    border-radius: 4px;
+}

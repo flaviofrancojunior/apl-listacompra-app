@@ -1,0 +1,37 @@
+@import './variables';
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: $font-family-primary;
+    background-color: $color-neutral-white;
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+}
+
+html.cdk-global-scrollblock {
+    position: initial;
+    width: initial;
+    overflow: hidden;
+}
+
+.box-information {
+    @extend .pt-2,
+        .pb-2,
+        .pr-4,
+        .pl-4,
+        .p1,
+        .border-basic,
+        .text-center,
+        .fg-neutral-dark;
+}
+
+.box-information button {
+    margin-bottom: -8px;
+}

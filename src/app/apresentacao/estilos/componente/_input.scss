@@ -1,0 +1,196 @@
+.input_container:focus-within {
+    border: 1px solid $color-neutral-medium !important;
+}
+
+.input_container.input_open {
+    border: 1px solid $color-neutral-medium !important;
+}
+
+.input_container {
+    position: relative;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    height: 60px;
+
+    &.input_container--invalid {
+        border: 1px solid $color-feedback-danger-dark !important;
+
+        .input_label {
+            color: $color-feedback-danger-dark;
+        }
+
+        ::ng-deep .input_icon svg {
+            color: $color-feedback-danger-dark;
+        }
+    }
+}
+
+.input_container--no-border {
+    position: relative;
+    border: none;
+    border-radius: 4px;
+    height: 60px;
+
+    &.input_container--invalid {
+        .input_label {
+            color: $color-feedback-danger-dark;
+        }
+
+        ::ng-deep .input_icon svg {
+            color: $color-feedback-danger-dark;
+        }
+    }
+}
+
+.input_field {
+    color: $color-neutral-darkest;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: inherit;
+    text-transform: inherit;
+    align-self: flex-end;
+    box-sizing: border-box;
+    padding: 8px 16px 8px 16px;
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    transition: 0.2s ease-in-out;
+    height: 42px;
+    box-sizing: border-box;
+    margin-top: 18px;
+
+    &:focus {
+        outline: none !important;
+
+        &::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: inherit;
+        }
+        &:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: inherit;
+        }
+        &::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: inherit;
+        }
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            color: inherit;
+        }
+        &::placeholder {
+            color: inherit;
+        }
+    }
+
+    &:disabled {
+        color: $color-neutral-light;
+        -webkit-text-fill-color: $color-neutral-light;
+        -webkit-opacity: 1 !important;
+        opacity: 1 !important;
+    }
+}
+
+.input_field:disabled ~ .input_label {
+    color: $color-neutral-light;
+    -webkit-text-fill-color: $color-neutral-light;
+    -webkit-opacity: 1 !important;
+    opacity: 1 !important;
+}
+
+.sfr-input-icon ~ .input_field {
+    padding: 8px 48px 8px 16px !important;
+}
+
+.sfr-input-icon ~ .input_field--no-label {
+    padding: 8px 48px 8px 16px !important;
+}
+
+.input_field:not(.empty) + label,
+.input_field.empty:focus + label {
+    margin-top: 18px;
+    top: -24px;
+    pointer-events: none;
+}
+
+.input_field--no-label {
+    color: $color-neutral-darkest;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: inherit;
+    text-transform: inherit;
+    align-self: flex-end;
+    box-sizing: border-box;
+    padding: 8px 16px 8px 16px;
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    transition: 0.2s ease-in-out;
+    height: 60px;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none !important;
+    }
+
+    &:disabled {
+        color: $color-neutral-light;
+        -webkit-text-fill-color: $color-neutral-light;
+        -webkit-opacity: 1 !important;
+        opacity: 1 !important;
+    }
+}
+
+.input_field--no-label:disabled ~ .input_label {
+    color: $color-neutral-light;
+    -webkit-text-fill-color: $color-neutral-light;
+    -webkit-opacity: 1 !important;
+    opacity: 1 !important;
+}
+
+.input_field--no-label:not(.empty) + label,
+.input_field--no-label.empty:not(.input_data):focus + label {
+    display: none;
+}
+
+.input_label {
+    position: absolute;
+    top: 0px;
+    left: 16px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    height: 42px;
+    cursor: text;
+    transition: 0.2s ease-in-out;
+    box-sizing: border-box;
+
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+.input_icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 60px;
+    padding: 16px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.input_icon * {
+    cursor: pointer;
+}

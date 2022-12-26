@@ -1,0 +1,19 @@
+.mat-radio-button {
+    border-color: $color-neutral-light;
+}
+
+.mat-radio-button.mat-radio-checked {
+    border-color: $color-support-01-dark;
+}
+
+.mat-radio-outer-circle {
+    border-color: $color-support-01-dark !important;
+    border-width: 1px !important;
+}
+.mat-radio-inner-circle {
+    background-color: $color-support-01-dark !important;
+}
+
+.mat-radio-ripple .mat-radio-persistent-ripple {
+    background-color: $color-support-01-dark !important;
+}

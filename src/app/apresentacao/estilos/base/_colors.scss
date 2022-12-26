@@ -1,0 +1,273 @@
+//Cores
+
+//----- Cor Primária
+$color-brand-primary-darkest: #00001e;
+$color-brand-primary-dark: #00002d;
+$color-brand-primary-medium: #00003c;
+$color-brand-primary-light: #2a2a5c;
+$color-brand-primary-lightest: #7e7e9d;
+
+//----- Cor Secundária
+$color-brand-secondary-darkest: #00001e;
+$color-brand-secondary-dark: #00002d;
+$color-brand-secondary-medium: #00003c;
+$color-brand-secondary-light: #2a2a5c;
+$color-brand-secondary-lightest: #7e7e9d;
+
+//----- Cores de Suporte
+$color-support-01-darkest: #486f99;
+$color-support-01-dark: #7495b8;
+$color-support-01-medium: #8ab8cc;
+$color-support-01-light: #9dc4d4;
+$color-support-01-lightest: #c4dbe5;
+
+$color-support-02-darkest: #6b6641;
+$color-support-02-dark: #c2b97f;
+$color-support-02-medium: #dcd49d;
+$color-support-02-light: #e2dbad;
+$color-support-02-lightest: #ede9ce;
+
+$color-support-03-darkest: #624411;
+$color-support-03-dark: #c0964d;
+$color-support-03-medium: #d4ad68;
+$color-support-03-light: #dbbb81;
+$color-support-03-lightest: #e9d6b3;
+
+//----- Cores neutras
+$color-neutral-darkest: #1a1a1a;
+$color-neutral-dark: #4f4f4f;
+$color-neutral-medium: #9e9e9e;
+$color-neutral-light: #d8d8d8;
+$color-neutral-lightest: #ededed;
+$color-neutral-white: #ffffff;
+
+//----- Cores de feedback
+$color-feedback-success-darkest: #225230;
+$color-feedback-success-dark: #337b47;
+$color-feedback-success-medium: #44a45f;
+$color-feedback-success-light: #8fc89f;
+$color-feedback-success-lightest: #daeddf;
+
+$color-feedback-warning-darkest: #736a11;
+$color-feedback-warning-dark: #ad9f1a;
+$color-feedback-warning-medium: #e6d422;
+$color-feedback-warning-light: #f0e57a;
+$color-feedback-warning-lightest: #faf6d3;
+
+$color-feedback-danger-darkest: #730c1f;
+$color-feedback-danger-dark: #ad112f;
+$color-feedback-danger-medium: #e6173e;
+$color-feedback-danger-light: #f0748b;
+$color-feedback-danger-lightest: #fad1d8;
+
+$color-feedback-info-darkest: #1e536b;
+$color-feedback-info-dark: #2d7da1;
+$color-feedback-info-medium: #3ca6d6;
+$color-feedback-info-light: #8acae6;
+$color-feedback-info-lightest: #d8edf7;
+
+//----- Cor Primária
+$primary: (
+    darkest: $color-brand-primary-darkest,
+    dark: $color-brand-primary-dark,
+    medium: $color-brand-primary-medium,
+    light: $color-brand-primary-light,
+    lightest: $color-brand-primary-lightest
+);
+
+//----- Cor Secundária
+$secondary: (
+    darkest: $color-brand-secondary-darkest,
+    dark: $color-brand-secondary-dark,
+    medium: $color-brand-secondary-medium,
+    light: $color-brand-secondary-light,
+    lightest: $color-brand-secondary-lightest
+);
+
+//----- Cores de Suporte
+$support01: (
+    darkest: $color-support-01-darkest,
+    dark: $color-support-01-dark,
+    medium: $color-support-01-medium,
+    light: $color-support-01-light,
+    lightest: $color-support-01-lightest
+);
+
+$support02: (
+    darkest: $color-support-02-darkest,
+    dark: $color-support-02-dark,
+    medium: $color-support-02-medium,
+    light: $color-support-02-light,
+    lightest: $color-support-02-lightest
+);
+
+$support03: (
+    darkest: $color-support-03-darkest,
+    dark: $color-support-03-dark,
+    medium: $color-support-03-medium,
+    light: $color-support-03-light,
+    lightest: $color-support-03-lightest
+);
+
+//----- Cores neutras
+$neutral: (
+    darkest: $color-neutral-darkest,
+    dark: $color-neutral-dark,
+    medium: $color-neutral-medium,
+    light: $color-neutral-light,
+    lightest: $color-neutral-lightest,
+    'white': $color-neutral-white
+);
+
+//----- Cores de feedback
+$success: (
+    darkest: $color-feedback-success-darkest,
+    dark: $color-feedback-success-dark,
+    medium: $color-feedback-success-medium,
+    light: $color-feedback-success-light,
+    lightest: $color-feedback-success-lightest
+);
+
+$warning: (
+    darkest: $color-feedback-warning-darkest,
+    dark: $color-feedback-warning-dark,
+    medium: $color-feedback-warning-medium,
+    light: $color-feedback-warning-light,
+    lightest: $color-feedback-warning-lightest
+);
+
+$danger: (
+    darkest: $color-feedback-danger-darkest,
+    dark: $color-feedback-danger-dark,
+    medium: $color-feedback-danger-medium,
+    light: $color-feedback-danger-light,
+    lightest: $color-feedback-danger-lightest
+);
+
+$info: (
+    darkest: $color-feedback-info-darkest,
+    dark: $color-feedback-info-dark,
+    medium: $color-feedback-info-medium,
+    light: $color-feedback-info-light,
+    lightest: $color-feedback-info-lightest
+);
+
+//----- Paleta de cores
+$colors: (
+    primary: $primary,
+    secondary: $secondary,
+    support01: $support01,
+    support02: $support02,
+    support03: $support03,
+    neutral: $neutral,
+    success: $success,
+    warning: $warning,
+    danger: $danger,
+    info: $info
+);
+
+//----- Gradientes
+$color-linear-gradient-primary: linear-gradient(
+    to right,
+    $color-brand-primary-darkest,
+    $color-brand-primary-medium
+);
+$color-linear-gradient-secondary: linear-gradient(
+    to right,
+    $color-brand-primary-darkest,
+    $color-brand-primary-medium
+);
+$color-linear-gradient-neutral-01: linear-gradient(
+    to right,
+    $color-neutral-darkest,
+    $color-neutral-medium
+);
+$color-linear-gradient-neutral-02: linear-gradient(
+    90deg,
+    $color-neutral-medium 0%,
+    $color-neutral-lightest 100%
+);
+
+@mixin init-colors($args) {
+    @each $name, $collection in $args {
+        @each $tone, $color in $collection {
+            .fg-#{$name}-#{$tone},
+            .fg-#{$name}-#{$tone}-active:active,
+            .fg-#{$name}-#{$tone}-hover:hover,
+            .fg-#{$name}-#{$tone}-focus:focus,
+            .fg-#{$name}-#{$tone}-disabled:disabled {
+                color: $color;
+            }
+
+            .bg-#{$name}-#{$tone},
+            .bg-#{$name}-#{$tone}-active:active,
+            .bg-#{$name}-#{$tone}-hover:hover,
+            .bg-#{$name}-#{$tone}-focus:focus,
+            .bg-#{$name}-#{$tone}-disabled:disabled {
+                background-color: $color;
+            }
+
+            .bd-#{$name}-#{$tone},
+            .bd-#{$name}-#{$tone}-active:active,
+            .bd-#{$name}-#{$tone}-hover:hover,
+            .bd-#{$name}-#{$tone}-focus:focus,
+            .bd-#{$name}-#{$tone}-disabled:disabled {
+                border-color: $color;
+            }
+
+            .ol-#{$name}-#{$tone},
+            .ol-#{$name}-#{$tone}-active:active,
+            .ol-#{$name}-#{$tone}-hover:hover,
+            .ol-#{$name}-#{$tone}-focus:focus,
+            .ol-#{$name}-#{$tone}-disabled:disabled {
+                outline-color: $color;
+            }
+        }
+    }
+    .bg-gradient-primary {
+        background-image: $color-linear-gradient-primary;
+    }
+    .bg-gradient-secondary {
+        background-image: $color-linear-gradient-secondary;
+    }
+    .bg-gradient-neutral01 {
+        background-image: $color-linear-gradient-neutral-01;
+    }
+    .bg-gradient-neutral02 {
+        background-image: $color-linear-gradient-neutral-02;
+    }
+
+    .bg-transparent {
+        background-color: transparent;
+
+        &:active,
+        :focus {
+            background-color: mix($color-neutral-darkest, transparent, 5%);
+        }
+    }
+
+    .fg-inherit {
+        color: inherit;
+    }
+    .fg-inherit-hover:hover {
+        color: inherit;
+    }
+    .fg-inherit-disabled:disabled {
+        color: inherit !important;
+    }
+    .bg-inherit {
+        background-color: inherit;
+    }
+    .bg-inherit-hover:hover {
+        background-color: inherit;
+    }
+    .bg-inherit-disabled:disabled {
+        background-color: inherit !important;
+    }
+    .bd-inherit {
+        border-color: inherit;
+    }
+    .ol-inherit {
+        outline-color: inherit;
+    }
+}

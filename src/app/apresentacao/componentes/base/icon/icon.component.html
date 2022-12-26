@@ -1,0 +1,5 @@
+<ng-container *ngIf="_icone">
+    <svg class="icon {{ iconClass | JoinPipe }}">
+        <use attr.href="{{ _icone.caminho }}"></use>
+    </svg>
+</ng-container>

@@ -1,0 +1,49 @@
+<div class="d-flex flex-align-center mb-6">
+    <div class="s1 fg-support03-medium">Parâmetros de Sistema</div>
+    <div class="title-divider mr-6"></div>
+    <button sfr-button-outline--primary (clicarEvento)="cadastrarParametro()">Cadastrar novo parâmetro</button>
+</div>
+
+<div class="w-100 pos-relative">
+    <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+    <mat-table matSort [dataSource]="_listaParametros" class="w-100" matSortActive="chave" matSortDirection="asc">
+        <ng-container matColumnDef="id">
+            <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por id">Id</mat-header-cell>
+            <mat-cell class="p3" *matCellDef="let element">{{ element.id }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="chave">
+            <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por chave">Chave</mat-header-cell>
+            <mat-cell class="p3" *matCellDef="let element">{{ element.chave }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valor">
+            <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por valor">Valor</mat-header-cell>
+            <mat-cell class="p3" *matCellDef="let element">{{ element.valor }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dataAtualizacao">
+            <mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Ordenar por data de atualização">Última Atualização</mat-header-cell>
+            <mat-cell class="p3" *matCellDef="let element">{{ element.dataAtualizacao | date: 'dd/MM/YYYY HH:mm:ss' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index">
+                <div class="w-100 d-flex flex-justify-end gap-1">
+                    <button sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Editar" matTooltipPosition="above" (clicarEvento)="alterarParametro(element)">
+                        <sfr-icon icon="edit" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                    <button sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Remover" matTooltipPosition="above" (clicarEvento)="removerParametro(element.id)">
+                        <sfr-icon icon="delete" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                    </button>
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="_colunasExibidas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: _colunasExibidas"></mat-row>
+        <div *matNoDataRow class="p1 fg-neutral-medium p-4">Sem dados para exibir no momento.</div>
+    </mat-table>
+    <mat-paginator showFirstLastButtons aria-label="Selecione a quantidade para visualização"></mat-paginator>
+</div>

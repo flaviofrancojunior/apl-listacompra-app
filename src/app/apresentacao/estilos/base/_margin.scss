@@ -1,0 +1,38 @@
+@mixin init-margin() {
+    @for $i from 0 through 25 {
+        .m-#{$i} {
+            margin: 4px * $i !important;
+        }
+        .mt-#{$i} {
+            margin-top: 4px * $i !important;
+        }
+        .mb-#{$i} {
+            margin-bottom: 4px * $i !important;
+        }
+        .mr-#{$i} {
+            margin-right: 4px * $i !important;
+        }
+        .ml-#{$i} {
+            margin-left: 4px * $i !important;
+        }
+        .mb-#{$i}-not-last:not(:last-child) {
+            margin-bottom: 4px * $i !important;
+        }
+    }
+
+    .m-auto {
+        margin: auto auto;
+    }
+
+    .mt-auto {
+        margin-top: auto;
+    }
+
+    .mb-auto {
+        margin-bottom: auto;
+    }
+
+    .mt-32 {
+        margin-top: 128px !important;
+    }
+}

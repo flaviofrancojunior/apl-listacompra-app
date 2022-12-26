@@ -1,0 +1,17 @@
+<div sfr-card class="p-6 pos-relative">
+    <div class="mb-4">
+        <button sfr-button-flat--transparent class="fg-neutral-darkest" (clicarEvento)="navegarParaCadastros()">
+            <sfr-icon icon="chevron-left" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+            <div class="p1 fg-neutral-darkest ml-2">Voltar</div>
+        </button>
+    </div>
+    <div class="d-flex flex-align-center">
+        <div class="s1 fg-support03-medium">Criar Plano de Contas</div>
+        <div class="title-divider"></div>
+    </div>
+    <div class="d-flex flex-column gap-6 pos-relative">
+        <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+
+        <sfr-cadastros-tree-plano-contas [dados]="_listaPlanoContas"></sfr-cadastros-tree-plano-contas>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@import './colors';
+
+.title-divider {
+    height: 1px;
+    background-color: $color-neutral-light;
+    flex-grow: 1;
+    margin: 0px 0px 0px 24px;
+}
+
+.divider {
+    height: 1px;
+    background-color: $color-neutral-light;
+    flex-grow: 1;
+}
+
+.content-wrapper {
+    padding: 24px 24px;
+}
+
+.content-wrapper-no-top-bottom {
+    padding: 0px 24px;
+}
+
+@mixin init-gaps() {
+    @for $i from 0 through 10 {
+        .gap-#{$i} {
+            gap: 4px * $i !important;
+        }
+    }
+}

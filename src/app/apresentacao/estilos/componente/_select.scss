@@ -1,0 +1,108 @@
+.mat-select {
+    border: 1px solid $color-neutral-light;
+    border-radius: 4px;
+    padding: 0px 16px;
+    height: 60px;
+}
+
+.mat-select--invalid {
+    border: 1px solid $color-feedback-danger-dark !important;
+    border-radius: 4px;
+    padding: 0px 16px;
+    height: 60px;
+}
+
+.mat-select-placeholder {
+    color: $color-neutral-dark;
+    @extend .p3;
+}
+
+.mat-select-disabled {
+    .mat-select-placeholder {
+        color: $color-neutral-light;
+    }
+    .mat-select-value-text {
+        color: $color-neutral-light !important;
+    }
+    .mat-select-arrow {
+        color: $color-neutral-light;
+        border-right: 2px solid $color-neutral-light !important;
+    }
+}
+
+mat-select[aria-expanded='true'] .mat-select-arrow {
+    transform: rotate(225deg) !important;
+}
+mat-select[aria-expanded='false'] .mat-select-arrow {
+    transform: rotate(45deg) !important;
+}
+
+.cdk-overlay-pane.select-container {
+    transform: translate(-16px, 60px) !important;
+}
+
+mat-select[aria-expanded='true'] {
+    border: 1px solid $color-neutral-medium;
+}
+
+.mat-select-value-text {
+    color: $color-neutral-darkest !important;
+    @extend .p1;
+}
+
+.mat-select-arrow {
+    border-style: solid;
+    border-width: 0 2px 2px 0 !important;
+    content: '';
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    border-left: 0px solid !important;
+    border-top: 0px solid !important;
+    color: $color-neutral-dark;
+    border-right: 2px solid $color-neutral-dark !important;
+}
+
+.mat-option {
+    font-family: $font-family-primary !important;
+    font-weight: $font-weight-regular !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+
+    .mat-option-text {
+        font-size: inherit;
+        color: mix(white, $color-neutral-medium, 20%);
+    }
+}
+
+.mat-select-trigger {
+    height: 100% !important;
+}
+
+.mat-select-value {
+    vertical-align: middle;
+}
+
+.select_icon {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    height: 60px;
+    padding: 16px 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+}
+
+.select_icon.is-disabled * {
+    cursor: context-menu;
+    color: $color-neutral-light;
+}
+
+.select_icon * {
+    cursor: pointer;
+}

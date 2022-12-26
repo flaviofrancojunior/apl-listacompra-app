@@ -1,0 +1,21 @@
+.page-header {
+    position: fixed;
+    width: inherit;
+    z-index: 3;
+}
+
+.page-container {
+    padding-top: 96px;
+}
+
+.page-container.subnav {
+    padding-left: 64px;
+}
+
+.page-container.subnav.expanded {
+    padding-left: 240px;
+}
+
+.page-subnav {
+    z-index: 2;
+}

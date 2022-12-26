@@ -1,0 +1,11 @@
+<mat-dialog-content class="m-0 p-0">
+    <div class="d-flex flex-column flex-justify-center flex-align-center pt-10 pr-4 pl-4">
+        <img class="mb-6" [src]="_imagem.caminho" [alt]="_imagem.nome" width="120px" />
+        <div class="p1 text-center fg-neutral-darkest">{{ _dados.mensagem }}</div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="m-0 p-0">
+    <div class="d-flex w-100 pr-4 pl-4 pb-6 pt-6">
+        <button sfr-button-outline--primary size="full" (clicarEvento)="acaoPrimaria()">{{ _dados.textoBotaoPrimario }}</button>
+    </div>
+</mat-dialog-actions>

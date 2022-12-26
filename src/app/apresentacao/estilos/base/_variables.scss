@@ -1,0 +1,33 @@
+//Resoluções oficiais: mobile: 320px, tablet: 768px, desktop: 1280px
+$device-width-mobile-xs: 0px;
+$device-width-mobile-s: 360px;
+$device-width-tablet-m: 768px;
+$device-width-desktop-l: 1024px;
+$device-width-desktop-xl: 1280px;
+
+//Tipografia
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: 'Roboto Slab';
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-extrabold: 700;
+
+//Header
+$header-height-regular-mobile: 76px; //Mobile (Em uso)
+$header-height-regular-desktop: 76px; //Mobile (Em uso)
+$header-height-extended-mobile: 128px; //Mobile
+$header-height-extended-desktop: 128px; //Desktop
+
+//Grid
+$margin-mobile-xs: 12px; //Em uso
+$margin-mobile-s: 12px; //Em uso
+$margin-tablet-m: 40px; //Em uso
+$margin-desktop-l: 40px; //Em uso
+
+$border-radius: 4px;
+
+//Shadow
+$shadow-light: 0px 4px 8px 0px #0000002e;

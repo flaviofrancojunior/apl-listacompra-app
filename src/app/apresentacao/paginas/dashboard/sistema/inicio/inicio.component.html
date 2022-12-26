@@ -1,0 +1,19 @@
+<div class="content-wrapper">
+    <sfr-tabs mode="vertical" (alterarAbaEvento)="definirAbaAtiva($event)">
+        <ng-template tab label="Auditoria">
+            <div *ngIf="_abaAtiva === 0" class="p-6">
+                <sfr-sistema-card-auditoria></sfr-sistema-card-auditoria>
+            </div>
+        </ng-template>
+        <ng-template tab label="Parâmetros">
+            <div *ngIf="_abaAtiva === 1" class="p-6">
+                <sfr-sistema-card-parametros></sfr-sistema-card-parametros>
+            </div>
+        </ng-template>
+        <ng-template tab label="Moedas">
+            <div *ngIf="_abaAtiva === 2" class="p-6">
+                <sfr-sistema-card-moedas></sfr-sistema-card-moedas>
+            </div>
+        </ng-template>
+    </sfr-tabs>
+</div>

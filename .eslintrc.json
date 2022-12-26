@@ -1,0 +1,65 @@
+{
+    "root": true,
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": [
+                    "tsconfig.json"
+                    //"e2e/tsconfig.json"
+                ],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:prettier/recommended"
+            ],
+            "plugins": ["prettier"],
+            "rules": {
+                "@angular-eslint/no-host-metadata-property": "off",
+                "@typescript-eslint/no-inferrable-types": "off",
+                "@typescript-eslint/consistent-type-definitions": "off",
+                "@typescript-eslint/strict-boolean-expressions": "off",
+                "@typescript-eslint/no-floating-promises": "off",
+                "@typescript-eslint/comma-spacing": "off",
+                "@typescript-eslint/return-await": "off",
+                "@typescript-eslint/no-namespace": "off",
+                "prettier/prettier": "error",
+                "jsdoc/no-types": "off",
+                "max-len": [
+                    "error",
+                    {
+                        "code": 280
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "sfr",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "sfr",
+                        "style": "camelCase"
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.component.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        },
+        {
+            "files": ["*.component.ts"],
+            "extends": [
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ]
+        }
+    ]
+}

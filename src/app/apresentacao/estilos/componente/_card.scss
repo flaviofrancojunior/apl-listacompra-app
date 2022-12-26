@@ -1,0 +1,41 @@
+@import '../base/variables';
+@import '../base/colors';
+
+.sfr-card {
+    border-radius: $border-radius;
+
+    //Sombra
+    -webkit-box-shadow: $shadow-light;
+    -moz-box-shadow: $shadow-light;
+    box-shadow: $shadow-light;
+
+    //Cor
+    background-color: $color-neutral-white;
+}
+
+.sfr-card--bars-primary {
+    position: relative;
+    padding: 24px;
+
+    &::before {
+        top: 0;
+        content: '';
+        width: 50%;
+        height: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color-brand-primary-medium;
+    }
+
+    &::after {
+        bottom: 0;
+        content: '';
+        width: 50%;
+        height: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color-brand-primary-medium;
+    }
+}

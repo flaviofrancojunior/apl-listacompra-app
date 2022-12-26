@@ -1,0 +1,172 @@
+<div class="d-flex flex-column">
+    <div mat-dialog-title>
+        <div class="d-flex flex-align-center">
+            <button sfr-button-flat--transparent class="fg-neutral-darkest" (clicarEvento)="cancelar()">
+                <sfr-icon icon="cancel" [iconClass]="['fg-inherit', 'p1']"></sfr-icon>
+            </button>
+            <div class="s1 fg-support03-medium m-auto">{{ _textos[_configuracao.operacao].titulo }}</div>
+        </div>
+    </div>
+    <mat-dialog-content class="d-flex" style="flex-grow: 1">
+        <div class="d-flex gap-4">
+            <div class="pos-relative pr-2" style="flex-grow: 1; overflow: auto; height: calc(100vh - 268px)">
+                <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+
+                <mat-table matSort [dataSource]="_listaMovimentacoes" class="w-100">
+                    <ng-container matColumnDef="data">
+                        <mat-header-cell *matHeaderCellDef>Data Movimento</mat-header-cell>
+                        <mat-cell class="p3" *matCellDef="let element">{{ element.data | date: 'dd/MM/YYYY' }}</mat-cell>
+                        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="descricao">
+                        <mat-header-cell *matHeaderCellDef sortActionDescription="Ordenar por lançamento">Lançamento</mat-header-cell>
+                        <mat-cell class="p3" *matCellDef="let element">
+                            <div
+                                class="mr-1"
+                                [style.text-decoration]="element.complemento.length > 0 ? 'underline' : 'none'"
+                                [matTooltip]="element.complemento.length > 0 ? element.complemento : ''"
+                                matTooltipPosition="above"
+                                [innerHTML]="element.descricao?.replaceAll('\n', '<br>')"></div>
+                        </mat-cell>
+                        <mat-footer-cell class="p2" *matFooterCellDef>Total</mat-footer-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="valor">
+                        <mat-header-cell *matHeaderCellDef>Valor</mat-header-cell>
+                        <mat-cell class="p3" *matCellDef="let element">{{ element.valor | accounting }}</mat-cell>
+                        <mat-footer-cell class="p2" *matFooterCellDef>{{ 100000.59 | accounting }}</mat-footer-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="planoContaCredito">
+                        <mat-header-cell *matHeaderCellDef>Conta Crédito</mat-header-cell>
+                        <mat-cell class="p3" *matCellDef="let element">{{ element.planoContaCreditoNumero + ' - ' + element.planoContaCreditoDescricao }}</mat-cell>
+                        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="planoContaDebito">
+                        <mat-header-cell *matHeaderCellDef>Conta Débito</mat-header-cell>
+                        <mat-cell class="p3" *matCellDef="let element">{{ element.planoContaDebitoNumero + ' - ' + element.planoContaDebitoDescricao }}</mat-cell>
+                        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="lote">
+                        <mat-header-cell *matHeaderCellDef>Lote</mat-header-cell>
+                        <mat-cell class="p3" *matCellDef="let element">
+                            <div class="w-100 d-flex flex-justify-start">
+                                <sfr-icon [icon]="element.loteAberto ? 'lock-open' : 'lock-closed'" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                            </div>
+                        </mat-cell>
+                        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="acao-1">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index">
+                            <button [style.visibility]="element.movimentoContabilPaiId ? 'visible' : 'hidden'" sfr-button-flat--transparent--rounded class="fg-inherit bg-inherit-hover" matTooltip="Editar" matTooltipPosition="above" (clicarEvento)="editarMovimentacao(element)">
+                                <sfr-icon icon="edit" [iconClass]="['fg-inherit', 's2']"></sfr-icon>
+                            </button>
+                        </mat-cell>
+                        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="_colunasExibidas; sticky: true"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: _colunasExibidas"></mat-row>
+
+                    <div *matNoDataRow class="p1 fg-neutral-medium p-4">Sem dados para exibir no momento.</div>
+                </mat-table>
+            </div>
+            <div>
+                <div class="p-2 border-basic d-flex flex-column flex-justify-between gap-4" style="position: sticky; top: 0">
+                    <div class="s3 fg-neutral-dark text-center">Resumo</div>
+                    <!-- <div>
+                        <div class="p3 fg-neutral-darkest">
+                            Data: <span class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.data | date: 'dd/MM/YYYY' }}</span>
+                        </div>
+
+                        <div class="p3 fg-neutral-darkest">
+                            Lançamento: <span class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.descricao }}</span>
+                        </div>
+
+                        <div class="p3 fg-neutral-darkest">
+                            Complemento: <span class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.complemento }}</span>
+                        </div>
+
+                        <div class="p3 fg-neutral-darkest">
+                            Conta Crédito: <span class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.planoContaCreditoNumero + ' - ' + _movimentoContabilPai.planoContaCreditoDescricao }}</span>
+                        </div>
+
+                        <div class="p3 fg-neutral-darkest">
+                            Conta Débito: <span class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.planoContaDebitoNumero + ' - ' + _movimentoContabilPai.planoContaDebitoDescricao }}</span>
+                        </div>
+
+                        <div class="p3 fg-neutral-darkest">
+                            Valor: <span class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.valor | accounting }}</span>
+                        </div>
+                    </div> -->
+                    <div style="display: grid; grid-template-columns: 100px 100px; grid-template-rows: repeat(4, 1fr); column-gap: 16px">
+                        <div class="d-flex flex-align-center flex-justify-end">
+                            <div class="p3 fg-neutral-darkest">Valor Inicial:</div>
+                        </div>
+                        <div class="d-flex flex-align-center">
+                            <div class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.valor | accounting }}</div>
+                        </div>
+
+                        <div class="d-flex flex-align-center flex-justify-end">
+                            <div class="p3 fg-success-medium">+ Entradas:</div>
+                        </div>
+                        <div class="d-flex flex-align-center">
+                            <div class="p2 fg-neutral-darkest">{{ calcularTotalEntradas() | accounting }}</div>
+                        </div>
+
+                        <div class="d-flex flex-align-center flex-justify-end">
+                            <div class="p3 fg-danger-medium">- Saidas:</div>
+                        </div>
+                        <div class="d-flex flex-align-center">
+                            <div class="p2 fg-neutral-darkest">{{ calcularTotalSaidas() | accounting }}</div>
+                        </div>
+
+                        <div class="d-flex flex-align-center flex-justify-end">
+                            <div class="p3 fg-neutral-darkest">Saldo Final:</div>
+                        </div>
+                        <div class="d-flex flex-align-center">
+                            <div class="p2 fg-neutral-darkest">{{ _movimentoContabilPai.valor + calcularTotalEntradas() + calcularTotalSaidas() | accounting }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="flex-column gap-4">
+        <div class="d-flex flex-justify-between gap-4 w-100 mt-4 pb-2">
+            <div class="d-flex flex-align-center">
+                <sfr-input type="moeda" [label]="true" placeholder="Valor" [control]="_form" controlName="valor"></sfr-input>
+            </div>
+
+            <div class="d-flex flex-column gap-4" style="min-width: 240px">
+                <sfr-select placeholder="Conta Crédito" [label]="true" [control]="_form" controlName="planoContaCreditoId" [options]="_listaPlanoContas"></sfr-select>
+
+                <sfr-select placeholder="Conta Débito" [label]="true" [control]="_form" controlName="planoContaDebitoId" [options]="_listaPlanoContas"></sfr-select>
+            </div>
+
+            <div class="d-flex flex-align-center">
+                <sfr-textarea placeholder="Lançamento" [control]="_form" controlName="descricao"></sfr-textarea>
+            </div>
+
+            <div class="d-flex flex-align-center">
+                <sfr-textarea placeholder="Complemento" [control]="_form" controlName="complemento"></sfr-textarea>
+            </div>
+
+            <div class="d-flex flex-align-center flex-justify-center gap-4 flex-column">
+                <button sfr-button-flat--primary size="fit" [disabled]="_form.invalid || estado.carregando" (clicarEvento)="_textos[_configuracao.operacao].acao()">{{ _textos[_configuracao.operacao].botaoPrimario }}</button>
+                <ng-container *ngIf="_configuracao.operacao === 'editar'">
+                    <button sfr-button-outline--primary size="fit" [disabled]="estado.carregando" (clicarEvento)="cancelarAlteracao()">Cancelar</button>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- <div class="d-flex flex-justify-end gap-4 w-100">
+            <button sfr-button-outline--primary size="fit" [disabled]="estado.carregando" (clicarEvento)="cancelar()">Finalizar</button>
+        </div> -->
+    </mat-dialog-actions>
+</div>

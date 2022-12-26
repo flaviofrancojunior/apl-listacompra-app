@@ -1,0 +1,47 @@
+.modal-base-container .mat-dialog-container {
+    padding: 24px !important;
+
+    .mat-dialog-content {
+        margin: 0px !important;
+        padding: 0px !important;
+        overflow: hidden;
+        max-height: 80vh;
+    }
+
+    .mat-dialog-actions {
+        margin: 0px !important;
+        padding: 24px 0px 0px 0px !important;
+        min-height: auto;
+        flex-wrap: nowrap;
+    }
+}
+
+.modal-drawer-right {
+    position: fixed !important;
+    right: 0;
+}
+
+.modal-drawer-right .mat-dialog-container {
+    padding: 16px !important;
+    height: 100vh;
+    display: flex !important;
+
+    sfr-modais-formulario-nova-movimentacao-contabil-detalhe {
+        display: flex;
+    }
+
+    .mat-dialog-content {
+        margin: 0px !important;
+        padding: 0px !important;
+        overflow: unset !important;
+        height: 100%;
+        max-height: none;
+    }
+
+    .mat-dialog-actions {
+        margin: 0px !important;
+        padding: 16px 0px 0px 0px !important;
+        min-height: auto;
+        flex-wrap: nowrap;
+    }
+}

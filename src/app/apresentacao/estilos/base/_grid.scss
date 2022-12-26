@@ -1,0 +1,26 @@
+.grid {
+    display: grid;
+}
+
+@mixin init-grid() {
+    @for $i from 0 through 12 {
+        .grid-cols-#{$i} {
+            grid-template-columns: repeat($i, minmax(0, 1fr));
+        }
+    }
+
+    @for $i from 0 through 6 {
+        .grid-rows-#{$i} {
+            grid-template-rows: repeat($i, minmax(0, 1fr));
+        }
+    }
+
+    @for $i from 0 through 25 {
+        .gap-x-#{$i} {
+            column-gap: 4px * $i !important;
+        }
+        .gap-y-#{$i} {
+            row-gap: 4px * $i !important;
+        }
+    }
+}

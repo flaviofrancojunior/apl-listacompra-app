@@ -1,0 +1,18 @@
+.ngx-spinner-overlay {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.loading-text {
+    position: unset !important;
+    transform: none !important;
+}
+
+.ngx-spinner-overlay > div:not(.loading-text) {
+    position: unset !important;
+    transform: none !important;
+}

@@ -1,0 +1,27 @@
+@import '../base/colors';
+
+.mat-checkbox-label {
+    white-space: pre-wrap;
+}
+
+.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background,
+.mat-checkbox-checked.mat-primary .mat-checkbox-background {
+    background-color: $color-support-01-dark !important;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-primary
+    .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-primary
+    .mat-ripple-element {
+    background: $color-support-01-darkest !important;
+}
+
+.mat-checkbox-background,
+.mat-checkbox-frame {
+    border-radius: 4px !important;
+}
+
+.mat-checkbox-frame {
+    border-color: #dbdbdb;
+    border-width: 1px !important;
+}

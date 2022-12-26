@@ -1,0 +1,34 @@
+@import '../../../estilos/principal.scss';
+
+.sidenav {
+    background-color: $color-brand-primary-medium !important;
+}
+
+.sidenav_container {
+    width: 84px;
+    @extend .d-flex, .flex-column, .bg-primary-medium, .fg-neutral-white;
+
+    .sidenav_container_option {
+        @extend .p-8;
+        justify-content: flex-start !important;
+    }
+}
+
+.sidenav_container.expanded {
+    width: 200px;
+}
+
+.sidenav_divider {
+    margin: 0px 16px;
+    height: 1px;
+    background-color: $color-neutral-white;
+    opacity: 50%;
+}
+
+.expanded ~ mat-sidenav-content {
+    width: calc(100% - 200px);
+}
+
+:not(.expanded) ~ mat-sidenav-content {
+    width: calc(100% - 84px);
+}

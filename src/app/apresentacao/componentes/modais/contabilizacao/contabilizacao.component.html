@@ -1,0 +1,29 @@
+<div mat-dialog-title>
+    <div class="d-flex flex-align-center mb-6">
+        <div class="s1 fg-support03-medium">Contabilizar</div>
+        <div class="title-divider"></div>
+    </div>
+</div>
+<mat-dialog-content>
+    <div class="d-flex flex-column pos-relative" style="width: 560px" [formGroup]="_form">
+        <div class="s3 fg-neutral-darkest mb-4">Selecione um período para contabilizar os lotes</div>
+
+        <div class="d-flex flex-align-center gap-4">
+            <div style="width: 280px">
+                <div class="s3 fg-neutral-darkest mb-2">Data Inicial</div>
+                <sfr-input type="data" [label]="false" placeholder="Data" [control]="_form" controlName="dataInicio"></sfr-input>
+            </div>
+            <div style="width: 280px">
+                <div class="s3 fg-neutral-darkest mb-2">Data Final</div>
+                <sfr-input type="data" [label]="false" placeholder="Data" [control]="_form" controlName="dataFim"></sfr-input>
+            </div>
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2" style="visibility: hidden">Pesquisar</div>
+                <button sfr-button-outline--primary size="fit" [disabled]="_form.invalid" (clicarEvento)="processarContabilizacao()">Iniciar</button>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="gap-4 flex-justify-end">
+    <button sfr-button-flat--primary size="fit" [disabled]="estado.carregando" (clicarEvento)="cancelar()">Finalizar contabilizacao</button>
+</mat-dialog-actions>

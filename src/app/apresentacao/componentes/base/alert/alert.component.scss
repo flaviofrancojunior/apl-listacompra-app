@@ -1,0 +1,42 @@
+@import '../../../estilos/principal.scss';
+
+.alert-wrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    min-height: 46px;
+
+    @extend .pr-2, .pl-2, .pt-2, .pb-2;
+}
+
+.alert-wrapper[theme='basic'] {
+    background-color: $color-neutral-lightest;
+
+    .alert-text {
+        color: $color-neutral-darkest;
+    }
+}
+
+.alert-wrapper[theme='info'] {
+    background-color: $color-feedback-info-lightest;
+
+    .alert-text {
+        color: $color-feedback-info-darkest;
+    }
+}
+
+.alert-wrapper[theme='warning'] {
+    background-color: $color-feedback-warning-lightest;
+
+    .alert-text {
+        color: $color-feedback-warning-darkest;
+    }
+}
+
+.alert-wrapper[theme='danger'] {
+    background-color: $color-feedback-danger-lightest;
+
+    .alert-text {
+        color: $color-feedback-danger-darkest;
+    }
+}

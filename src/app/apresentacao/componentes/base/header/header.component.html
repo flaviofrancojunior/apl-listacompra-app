@@ -1,0 +1,31 @@
+<div class="header" data-test="content">
+    <div class="header_title">{{ navegacaoHelper.rota.descricao.texto }}</div>
+    <div class="header_action">
+        <!-- <button sfr-button-flat--transparent--rounded class="fg-neutral-dark">
+            <sfr-icon icon="notification" [iconClass]="['h6', 'fg-neutral-dark']"></sfr-icon>
+            <div class="header_action_notification" *ngIf="_totalNotificacoes !== 0"></div>
+        </button> -->
+        <div class="d-flex flex-column">
+            <div class="p2 fg-neutral-darkest text-end">{{ _usuario ? _usuario.nome : '' }}</div>
+            <div class="p3 fg-neutral-medium text-end">{{ _usuario ? _usuario.cargo : '' }}</div>
+        </div>
+        <sfr-avatar size="small" [picture]="_usuario ? _usuario.fotoBase64 : ''" [matMenuTriggerFor]="menu" style="cursor: pointer"></sfr-avatar>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="executarAcao('meu-perfil')">
+                <span class="p1 fg-neutral-dark">Meu Perfil</span>
+            </button>
+            <div class="menu_divider"></div>
+            <button mat-menu-item (click)="executarAcao('notificacao')">
+                <span class="p1 fg-neutral-dark">Notificações</span>
+            </button>
+            <div class="menu_divider"></div>
+            <button mat-menu-item (click)="executarAcao('sistema')">
+                <span class="p1 fg-neutral-dark">Sistema</span>
+            </button>
+            <div class="menu_divider"></div>
+            <button mat-menu-item (click)="executarAcao('sair')">
+                <span class="p1 fg-neutral-dark">Sair</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@import '../../../../estilos/principal.scss';
+
+.mat-expansion-panel-header {
+    padding: 8px 24px;
+    min-height: 48px !important;
+    height: 100% !important;
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+    border: 1px solid $color-neutral-light;
+}
+
+::ng-deep .mat-expansion-panel-body {
+    padding: 24px !important;
+}

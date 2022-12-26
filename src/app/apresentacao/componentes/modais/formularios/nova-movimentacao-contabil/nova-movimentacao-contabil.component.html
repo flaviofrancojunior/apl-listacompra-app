@@ -1,0 +1,50 @@
+<div mat-dialog-title>
+    <div class="d-flex flex-align-center mb-6">
+        <div class="s1 fg-support03-medium">{{ _textos[_configuracao.operacao].titulo }}</div>
+        <div class="title-divider"></div>
+    </div>
+</div>
+<mat-dialog-content>
+    <div class="d-flex flex-column pos-relative" style="width: 760px" [formGroup]="_form">
+        <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+
+        <div class="mb-4" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 16px">
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2">Data do Movimento</div>
+                <sfr-input type="data" [label]="false" placeholder="" [control]="_form" controlName="data"></sfr-input>
+            </div>
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2">Valor</div>
+                <sfr-input type="moeda" [label]="false" placeholder="Valor" [control]="_form" controlName="valor"></sfr-input>
+            </div>
+        </div>
+
+        <div class="mb-4" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 16px">
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2">Conta Crédito</div>
+                <sfr-select placeholder="Selecione" [control]="_form" controlName="planoContaCreditoId" [options]="_listaPlanoContas"></sfr-select>
+            </div>
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2">Conta Débito</div>
+                <sfr-select placeholder="Selecione" [control]="_form" controlName="planoContaDebitoId" [options]="_listaPlanoContas"></sfr-select>
+            </div>
+        </div>
+
+        <div class="mb-4" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 16px">
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2">Lançamento</div>
+
+                <sfr-textarea placeholder="Digite um lançamento" [label]="false" [control]="_form" controlName="descricao"></sfr-textarea>
+            </div>
+            <div>
+                <div class="s3 fg-neutral-darkest mb-2">Complemento</div>
+
+                <sfr-textarea placeholder="Defina um complemento" [label]="false" [control]="_form" controlName="complemento"></sfr-textarea>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="gap-4 flex-justify-end">
+    <button sfr-button-outline--primary size="fit" [disabled]="estado.carregando" (clicarEvento)="cancelar()">Cancelar</button>
+    <button sfr-button-flat--primary size="fit" [disabled]="_form.invalid || estado.carregando" (clicarEvento)="_textos[_configuracao.operacao].acao()">{{ _textos[_configuracao.operacao].botaoPrimario }}</button>
+</mat-dialog-actions>

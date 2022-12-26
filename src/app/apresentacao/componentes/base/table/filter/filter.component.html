@@ -1,0 +1,43 @@
+<ng-container [formGroup]="_form">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="s3 fg-neutral-darkest">Filtros</mat-panel-title>
+            <mat-panel-description>
+                <mat-chip-list>
+                    <ng-container *ngFor="let filtro of obterControleFiltros().controls; let i = index">
+                        <ng-container *ngIf="filtro.get('pesquisa')?.value">
+                            <mat-chip (removed)="filtro.get('pesquisa')?.setValue('')">
+                                <span class="p2 fg-neutral-darkest mr-1">{{ config[i].titulo === '' ? 'Global' : config[i].titulo }}:</span>
+                                <span class="p3 fg-neutral-darkest">{{ filtro.get('pesquisa')?.value }}</span>
+                                <button matChipRemove>
+                                    <sfr-icon icon="cancel" [iconClass]="['p5', 'fg-neutral-darkest']"></sfr-icon>
+                                </button>
+                            </mat-chip>
+                        </ng-container>
+                    </ng-container>
+                    <!-- <mat-chip (removed)="limparTodosFiltros()" class="bg-danger-lightest" style="padding-left: 8px !important">
+                        <button matChipRemove style="margin-left: 0px; opacity: 1">
+                            <sfr-icon icon="delete" [iconClass]="['p3', 'fg-danger-darkest']"></sfr-icon>
+                        </button>
+                    </mat-chip> -->
+                </mat-chip-list>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="gap-4" style="display: grid; grid-template-columns: repeat(4, 1fr)">
+            <ng-container formArrayName="filtros">
+                <ng-container *ngFor="let filtro of obterControleFiltros().controls; let i = index">
+                    <div [formGroupName]="i">
+                        <ng-container *ngIf="filtro.get('tipo')?.value === 'input'">
+                            <div class="s3 fg-neutral-darkest mb-2" [style.visibility]="filtro.get('titulo')?.value === '' ? 'hidden' : 'visible'">{{ filtro.get('titulo')?.value === '' ? 'Filtro' : filtro.get('titulo')?.value }}</div>
+                            <sfr-input [type]="filtro.get('tipoDetalhe')?.value" [label]="false" [placeholder]="filtro.get('placeholder')?.value" [control]="obterControleFiltro(i)" controlName="pesquisa"></sfr-input>
+                        </ng-container>
+                        <ng-container *ngIf="filtro.get('tipo')?.value === 'select'">
+                            <div class="s3 fg-neutral-darkest mb-2" [style.visibility]="filtro.get('titulo')?.value === '' ? 'hidden' : 'visible'">{{ filtro.get('titulo')?.value === '' ? 'Filtro' : filtro.get('titulo')?.value }}</div>
+                            <sfr-select [placeholder]="filtro.get('placeholder')?.value" [control]="obterControleFiltro(i)" controlName="pesquisa" [options]="config[i].opcoes"></sfr-select>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </mat-expansion-panel>
+</ng-container>

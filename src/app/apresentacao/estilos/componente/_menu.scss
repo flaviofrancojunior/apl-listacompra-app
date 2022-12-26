@@ -1,0 +1,15 @@
+.mat-menu-item {
+    height: 32px !important;
+}
+
+.mat-menu-content:not(:empty) {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.mat-menu-panel {
+    min-width: 148px !important;
+    box-shadow: none !important;
+
+    @extend .border-1, .bd-neutral-light;
+}

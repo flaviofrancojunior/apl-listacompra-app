@@ -1,0 +1,42 @@
+<mat-sidenav-container hasBackdrop="false" autosize>
+    <mat-sidenav #sidenav opened [fixedInViewport]="true" mode="push" class="sidenav">
+        <div class="sidenav_container" #sidenavContainer>
+            <!-- <button
+                sfr-button-flat--primary
+                size="full"
+                class="{{ _expandido && menu.length > 0 ? 'pr-4 pl-4' : 'pr-8 pl-8' }}  pt-4 pb-4"
+                [matTooltip]="_expandido ? 'Fechar' : 'Expandir'"
+                matTooltipPosition="after"
+                (clicarEvento)="mudarExpansao()"
+                style="justify-content: flex-end !important">
+                <sfr-icon [icon]="_expandido ? 'mobile-back-arrow' : 'mobile-hamburguer'" [iconClass]="['fg-neutral-white', 'h6']"></sfr-icon>
+            </button> -->
+            <div class="d-flex flex-justify-center flex-align-center pt-2 pb-2" style="height: 96px">
+                <img src="assets/img/brasao-safra-branco.svg" />
+            </div>
+            <div style="overflow-y: auto">
+                <ng-container *ngFor="let tag of menu">
+                    <button
+                        sfr-button-flat--primary
+                        size="full"
+                        [active]="navegacaoHelper.urlAtual.includes(tag.detalhes?.rota?.url ?? '')"
+                        class="sidenav_container_option"
+                        [matTooltip]="tag.nomeExibicao"
+                        matTooltipPosition="after"
+                        [matTooltipDisabled]="_expandido"
+                        [disabled]="!tag.detalhes?.rota"
+                        (clicarEvento)="executarAcesso(tag)">
+                        <sfr-icon [icon]="tag?.detalhes?.icone" [iconClass]="['fg-neutral-white', 'h6']"></sfr-icon>
+                        <div *ngIf="_expandido" class="s1 fg-neutral-white ml-2">{{ tag.nomeExibicao }}</div>
+                    </button>
+                    <div class="sidenav_divider"></div>
+                </ng-container>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav position="end">End</mat-sidenav>
+
+    <mat-sidenav-content #sidenavContent class="bg-neutral-lightest" style="min-height: 100vh">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

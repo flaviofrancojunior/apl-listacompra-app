@@ -1,0 +1,49 @@
+@import '../../../estilos/principal.scss';
+
+.badge {
+    width: fit-content;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .badge-text {
+        @extend .p4;
+    }
+}
+
+.badge--primary {
+    @extend .bg-primary-medium, .fg-neutral-white, .border-radius-1;
+}
+.badge--secondary {
+    @extend .bg-support01-medium, .fg-neutral-white, .border-radius-1;
+}
+.badge--success {
+    @extend .bg-success-medium, .fg-neutral-white, .border-radius-1;
+}
+.badge--info {
+    @extend .bg-info-medium, .fg-neutral-white, .border-radius-1;
+}
+.badge--warning {
+    @extend .bg-warning-medium, .fg-primary-medium, .border-radius-1;
+}
+.badge--danger {
+    @extend .bg-danger-medium, .fg-neutral-white, .border-radius-1;
+}
+.badge--alert {
+    width: 24px;
+    height: 24px;
+    @extend .bg-primary-medium, .border-radius-full;
+}
+.badge--notification {
+    width: 36px;
+    height: 24px;
+    @extend .bg-primary-medium, .fg-neutral-white, .border-radius-125;
+}
+.badge--negative {
+    @extend .border-1,
+        .bd-primary-medium,
+        .bg-neutral-white,
+        .fg-primary-medium,
+        .border-radius-1;
+}

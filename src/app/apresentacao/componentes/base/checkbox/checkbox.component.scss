@@ -1,0 +1,5 @@
+@import '../../../estilos/principal.scss';
+
+.checkbox {
+    @extend .p3, .fg-neutral-darkest;
+}

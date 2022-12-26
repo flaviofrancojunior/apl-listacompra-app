@@ -1,0 +1,23 @@
+<div sfr-card class="card-login d-flex">
+    <div class="card-login_sessao d-flex flex-column flex-justify-center p-10 pos-relative" [formGroup]="_form">
+        <sfr-spinner [name]="estado.spinnerId" [text]="estado.spinnerMensagem"></sfr-spinner>
+        <div>
+            <img class="p-10" [src]="repositorioImagens.obter('logo_fam-azul')?.caminho" />
+        </div>
+        <sfr-input class="mb-4" type="texto" placeholder="Usuário" [invalid]="_form.hasError('CredenciaisInvalidas')" [control]="_form" controlName="usuario"></sfr-input>
+        <sfr-input class="mb-4" type="senha" placeholder="Senha" [invalid]="_form.hasError('CredenciaisInvalidas')" [control]="_form" controlName="senha" (keydown.enter)="_form.valid ? realizarLogin() : undefined"></sfr-input>
+        <div *ngIf="_form.hasError('CredenciaisInvalidas')" class="p3 fg-danger-dark mb-4">{{ _form.errors?.message }}</div>
+        <sfr-checkbox class="mb-8" [control]="_form" controlName="lembrarUsuario">Lembrar Usuário</sfr-checkbox>
+        <button sfr-button-flat--primary size="full" [disabled]="!_form.valid" (clicarEvento)="realizarLogin()">Acessar</button>
+    </div>
+    <div class="card-login_sessao d-flex flex-column bg-gradient-primary fg-neutral-white">
+        <div style="position: absolute">
+            <img class="p-10" [src]="repositorioImagens.obter('logo_safra-branco')?.caminho" />
+        </div>
+        <div class="d-flex flex-column flex-justify-center flex-grow-1 p-10">
+            <div class="h5 fg-neutral-white">Family Asset Management</div>
+            <hr class="card-login_divider" />
+            <div class="p3 fg-neutral-white">Sistema de Gestão Patrimonial Familiar</div>
+        </div>
+    </div>
+</div>

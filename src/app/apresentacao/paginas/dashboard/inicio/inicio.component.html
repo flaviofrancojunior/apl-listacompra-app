@@ -1,0 +1,27 @@
+<div class="content-wrapper">
+    <div class="tiles-grid">
+        <!-- <section style="grid-column: span 8; grid-row: span 6">
+            <sfr-resumo-card-movimentacoes></sfr-resumo-card-movimentacoes>
+        </section> -->
+        <section style="grid-column: span 8; grid-row: span 6">
+            <sfr-resumo-card-pessoas></sfr-resumo-card-pessoas>
+        </section>
+
+        <div sfr-card class="hover-no-shadow p-4 d-flex flex-column flex-justify-center flex-align-center" style="grid-row-start: 7 !important; grid-column: span 2; grid-row: span 2; cursor: pointer" (click)="navegarMovimentacao()">
+            <sfr-icon icon="cash-dollar" [iconClass]="['fg-primary-medium', 'h5', 'mb-3']"></sfr-icon>
+            <div class="p3 fg-neutral-darkest text-center">Movimentações Financeiras</div>
+        </div>
+        <div sfr-card class="hover-no-shadow p-4 d-flex flex-column flex-justify-center flex-align-center" style="grid-row-start: 7 !important; grid-column: span 2; grid-row: span 2; cursor: pointer" (click)="navegarPlanoContas()">
+            <sfr-icon icon="grammar" [iconClass]="['fg-primary-medium', 'h5', 'mb-3']"></sfr-icon>
+            <div class="p3 fg-neutral-darkest text-center">Plano de Contas</div>
+        </div>
+        <div sfr-card class="hover-no-shadow p-4 d-flex flex-column flex-justify-center flex-align-center" style="grid-row-start: 7 !important; grid-column: span 2; grid-row: span 2; cursor: pointer" (click)="navegarPessoas()">
+            <sfr-icon icon="bank" [iconClass]="['fg-primary-medium', 'h5', 'mb-3']"></sfr-icon>
+            <div class="p3 fg-neutral-darkest text-center">Pessoas</div>
+        </div>
+        <div sfr-card class="hover-no-shadow p-4 d-flex flex-column flex-justify-center flex-align-center" style="grid-row-start: 7 !important; grid-column: span 2; grid-row: span 2; cursor: pointer" (click)="navegarUsuarios()">
+            <sfr-icon icon="customers-group" [iconClass]="['fg-primary-medium', 'h5', 'mb-3']"></sfr-icon>
+            <div class="p3 fg-neutral-darkest text-center">Usuários</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+//Normalização
+@import '~normalize.css';
+
+//Base
+@import './base/fonts/robotoslab/robotoslab';
+@import './base/fonts/montserrat/montserrat';
+
+@import './base/borders';
+@include init-borders();
+
+@import './base/colors';
+@include init-colors($colors);
+
+@import './base/display';
+@import './base/flex';
+@import './base/global';
+@import './base/layout';
+@include init-gaps();
+
+@import './base/grid';
+@include init-grid();
+
+@import './base/snackbar';
+
+@import './base/margin';
+@include init-margin();
+
+@import './base/padding';
+@include init-padding();
+
+@import './base/scrollbar';
+
+@import './base/text';
+
+//Componentes
+@import './componente/button';
+@import './componente/card';
+@import './componente/checkbox';
+@import './componente/collapse';
+@import './componente/icon';
+@import './componente/input';
+@import './componente/menu';
+@import './componente/modals';
+@import './componente/radio';
+@import './componente/select';
+@import './componente/spinner';
+@import './componente/table';
+@import './componente/tabs';
+@import './componente/textarea';
+@import './componente/tooltip';
